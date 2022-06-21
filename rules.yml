@@ -1,0 +1,90 @@
+version: "3.1"
+
+rules:
+
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+
+
+  - rule: Ask user to rephrase the query whenever user sends a query with low NLU confidence 
+    steps:
+      - intent: nlu_fallback
+      - action: utter_default
+      
+  - rule: Ask user to rephrase the query whenever user search for product name with wrong title
+    steps:
+      - intent: nlu_fallback
+      - action: utter_default
+      
+  - rule: greet user whenever user greets the bot
+    steps:
+      - intent: customer_greet
+      - action: utter_customer_greet
+      
+  - rule: Ask user to share the feedback when user ends search query
+    steps:
+      - intent: customer_end_conversation
+      - action: utter_customer_end_conversation
+      
+  - rule: Say goodbye anytime when user says goodbye
+    steps:
+      - intent: customer_goodbye
+      - action: utter_customer_bye
+      
+  - rule: Ask user to rephrase the query whenever user search with inappropriate query
+    steps:
+      - intent: bot_challenge
+      - action: utter_ask_isbot
+
+
+      
+  - rule: Response with a chitchat utterance whenever user indulges in some chitchat
+    steps:
+      - intent: chitchat
+      - action: utter_chitchat
+
+  - rule: action_feedback
+    steps:
+    - intent: feedback
+    - action: utter_nicetomeetyou
+    - action: utter_react_positive
+
+
+  - rule: Respond with customer_contact whenever user enquire about contact details
+    steps:
+    - intent: customer_contact
+    - action: utter_customer_contact
+
+  - rule: Respond with  products list whenever user search or query for products list
+    steps:
+      - intent: products_list
+      - action: action_product
+
+  - rule: customer_shop_by_categories
+    steps:
+    - intent: customer_shop_by_categories
+    - action: action_categories_list
+    
+  - rule: react_negative
+    steps:
+    - intent: react_negative
+    - action: utter_react_negative
+    
+  - rule: say user i am a bot
+    steps:
+    - intent: ask_isbot
+    - action: utter_ask_isbot
+    
+  - rule: say bots language
+    steps:
+    - intent: ask_languagesbot
+    - action: utter_ask_languagesbot
+    
+  - rule: what bot can do
+    steps:
+    - intent: ask_whatspossible
+    - action: utter_ask_whatspossible
+    

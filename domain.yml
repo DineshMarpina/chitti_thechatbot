@@ -1,0 +1,406 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - customer_shop
+  - out_of_scope
+  - action_product_search:
+      use_entities:
+        - productname
+  - products_list
+  - customer_greet
+  - react_negative
+  - react_positive
+  - canthelp
+  - customer_contact
+  - customer_bye
+  - customer_help
+  - customer_goodbye
+  - chitchat
+  - shop_by_category
+  - feedback
+  - customer_end_conversation
+  - customer_menu
+  - customer_shop_by_categories
+  - conversation_continue
+  - thank_you
+  - ask_isbot
+  - ask_languagesbot
+  - ask_whatismyname
+  - ask_whatisbot
+  - ask_whatspossible
+  - non_english
+  - other
+  
+entities:
+  - name
+  - purchaseorder
+  - productname
+  - shop
+  - category
+  - language
+  - price
+  - time
+  - number
+  - more_less
+  - author_name
+  - first_name
+  - last_name
+  - address
+  - city
+  - state
+  - country
+  - postal_code
+  - phone_number
+  - year
+  - umsession
+  - dcsession
+  - user
+  - feedback
+  - medium
+  - limit
+  - orderid
+  - product
+  - skip
+  
+slots:
+  more_less:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: more_less
+  time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: time
+  price:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: price
+  author_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: author_name
+  productname:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: productname
+  user:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: user
+  feedback:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: feedback
+  medium:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: medium
+  limit:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: limit
+  name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: name
+  purchaseorder:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: purchaseorder
+  orderid:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: orderid
+  category:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: category
+  product:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: product
+  skip:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: skip
+  umsession:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: umsession
+  dcsession:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: dcsession
+  number:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: number
+  language:
+    type: categorical
+    values:
+      - english
+    mappings:
+    - type: custom
+  first_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: first_name
+  last_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: last_name
+  address:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: address
+  state:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: state
+  city:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: city
+  country:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: country
+  postal_code:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: postal_code
+  phone_number:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: phone_number
+  year:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: year
+
+
+
+
+responses:
+ 
+
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_customer_greet:
+  - text: Good to see you! below are quick links for you
+    buttons:
+    - title: Shop By Categories
+      payload: /customer_shop_by_categories
+    - title: Show Products
+      payload: /products_list
+    - title: Contact Us
+      payload: /customer_contact
+      
+  utter_customer_contact:
+  - text: You can reach us on (012)1290 678 or write to us on info@mystore.co.in
+  
+  utter_customer_bye:
+  - text: Goodbye!
+  - text: Bye!
+  - text: Ciao!
+  - text: Bye, was nice talking to you!
+  - text: Bye bye!
+  
+  utter_default:
+  - text: Sorry, I didn't understand! Can you rephrase again?
+  - text: Didn't understand what you said. Can you rephrase again?
+  
+  utter_ask_affirm:
+  - text: okay
+  
+  utter_ask_rephrase:
+  - text: Can you please rephrase again?
+  
+  utter_customer_help:
+  - text: |
+      please select your search item of interest
+    buttons:
+    - title: Show Products
+      payload: /products_list
+    - title: Shop By Categories
+      payload: /customer_shop_by_categories
+    - title: Contact Us
+      payload: /customer_contact
+
+  utter_chitchat:
+  - text: |
+      Yep, I am"
+  - text: |
+      I am indeed a search bot.
+      
+  utter_non_english:
+  - text: I only understand/speak English, I'm sorry.
+  
+  utter_other:
+  - text: "I can't help you with that, I'm sorry."
+  
+  utter_out_of_scope:
+  - text: |
+      I'm your information chat assistant. I can help in finding best products of your interest.
+    buttons:
+    - title: Show Products
+      payload: /products_list
+    - title: Shop By Categories
+      payload: /customer_shop_by_categories
+    - title: Contact Us
+      payload: /customer_contact
+      
+  utter_react_negative:
+  - text: 😕 sorry i will try to improve thank for visiting.
+  - text: 😞 sorry i will try to improve thank for visiting.
+  - text: 😥 sorry i will try to improve thank for visiting.
+  - text: 😢 sorry i will try to improve thank for visiting.
+  
+  utter_react_positive:
+  - text: 😄 thanks for visiting come back again
+  - text: 😊 thanks for visiting come back again
+  - text: 👏 thanks for visiting come back again
+  - text: 😍 thanks for visiting come back again
+  
+  utter_canthelp:
+  - text:  |
+      I'm sorry I couldn't help you, I can help you on below things
+    buttons:
+    - title: Show Products
+      payload: /products_list
+    - title: Shop By Categories
+      payload: /customer_shop_by_categories
+    - title: Contact Us
+      payload: /customer_contact
+      
+  utter_customer_end_conversation:
+  - text: |
+      Please share your valuable feedback with us.
+    buttons:
+    - title: Excellent
+      payload: /react_positive
+    - title: Good
+      payload: /react_positive
+    - title: Average
+      payload: /react_negative
+    - title: Poor
+      payload: /react_negative
+      
+  utter_conversation_continue:
+  - text: |
+      Is there any thing else I can help with?
+    buttons:
+      - title: No, I got my answer
+        payload: /customer_end_conversation
+      - title: Yes, I have another query
+        payload: /customer_help
+        
+  utter_thank_you:
+  - text: |
+      Thank you!
+      
+  utter_thumbsup:
+  - text: |
+        glad it helped
+        
+  utter_greet:
+  - text: "Hey! How are you?"
+
+
+  utter_ask_isbot:
+  - text: "Yep, I'm Bot! "
+  - text: "I am indeed a search bot. "
+  
+  utter_ask_languagesbot:
+  - text: "I can spell baguette in French, but unfortunately English is the only language I can answer you in."
+  - text: "I am in the process of learning, but at the moment I can only speak English."
+  - text: "Binary code and the language of love. And English."
+  - text: "I was written in Python, but for your convenience I'll translate to English."
+  
+  utter_ask_whatismyname:
+  - text: "I'd tell you, but there's restricted access to that chunk of memory."
+  - text: "Believe it or not, I actually am not spying on your personal information."
+  
+  utter_ask_whatisBot:
+  - text: "I'm your information chat assistant. How can I help you today?"
+  
+  utter_ask_whatspossible:
+  - text: "I'm your information chat assistant. I can help in finding best products of your interest."
+    buttons:
+    - title: Todays Best Deals
+      payload: /products_list
+    - title: Show Products
+      payload: /products_list
+    - title: Shop By Categories
+      payload: /customer_shop_by_categories
+    - title: Contact Us
+      payload: /customer_contact
+
+  utter_nicetomeetyou:
+  - text: "Likewise!"
+  - text: "Thank you. It is a pleasure to meet you as well!"
+  - text: "It is nice to meet you too!"
+  - text: "Pleased to meet you too!"
+  - text: "It's always a pleasure to meet new people!"
+  - text: "Nice to meet you too! Happy to be of help."
+
+actions:
+  - action_product
+  - action_default_fallback
+  - action_feedback
+  - action_categories_list
+  - action_shop_by_category
+  - utter_out_of_scope
+  
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

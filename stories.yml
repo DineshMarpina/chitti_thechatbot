@@ -1,0 +1,76 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: customer_contact
+  steps:
+  - intent: customer_contact
+  - action: utter_customer_contact
+   
+    
+- story: customer_shop_by_categories
+  steps:
+  - intent: customer_shop_by_categories
+  - action: action_categories_list
+    
+- story: shop_by_category
+  steps:
+  - intent: shop_by_category
+  - action: action_shop_by_category
+    
+- story: Customer_main_menu
+  steps:
+  - intent: customer_help
+  - action: utter_customer_help
+ 
+- story: customer_products
+  steps:
+  - intent: products_list
+  - action: action_product
+
+- story: other
+  steps:
+  - intent: other
+  - action: utter_other 
+
+- story: non_english
+  steps:
+  - intent: non_english
+  - action: utter_non_english
+  
+
+  
+- story: feedback answer 
+  steps:
+  - intent: react_positive
+  - action: utter_react_positive
+  
+
+  
