@@ -54,4 +54,4 @@ To run the action server, open up another tab in Terminal and enter this command
 
 rasa run actions 
 
-#### Now in the rasa shell terminal you will be able to chat with the bot.
+#### Now in the rasa shell terminal we can chat with the chatbot.
